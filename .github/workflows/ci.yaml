@@ -24,8 +24,8 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn bootstrap
-    - run: cd ./packages/dapp && yarn build
-    - run: mv ./build ../../staging 
+    - run: cd ./packages/dapp && CI=false && npx lerna run build
+    - run: cp -r ./build ../../staging 
 
     - name: Push staging build
       run: |
