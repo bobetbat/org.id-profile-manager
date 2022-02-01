@@ -60,9 +60,12 @@
     "react-refresh": "0.11.0",
     "grommet": "^2.20.0",
     "grommet-icons": "^4.7.0",
-    "grommet-theme-hpe": "^2.3.0"
+    "grommet-theme-hpe": "^2.3.0",
+    "web3.storage": "^3.5.3"
   },
   "resolutions": {
     "babel-loader": "8.1.0"
+  },
+  "dependencies": {
   }
 }

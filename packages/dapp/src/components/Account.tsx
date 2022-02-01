@@ -1,7 +1,9 @@
 import Blockies from 'react-blockies';
 import styled from 'styled-components';
-import { Box, Text } from 'grommet';
+import { Box, Text, Button } from 'grommet';
 import { centerEllipsis, copyToClipboard } from '../utils/strings';
+import { Storage } from '../utils/web3Storage';
+import { fileToBlob } from '../utils/fileToBlob';
 
 export interface AccountProps {
   account?: string;
@@ -21,6 +23,12 @@ export const Account = ({ account }: AccountProps) => {
   if (!account) {
     return null;
   }
+  const submit = () => {
+    const storage = new Storage(process.env.WEB3_STORAGE_API_KEY ?? '')
+    const file = fileToBlob({obj:{"fileName": "hello"}, fileName:'name'})
+    console.log(file)
+    storage.add(file)
+  }
 
   return (
     <Box direction="row" align="center" pad='medium'>
@@ -36,6 +44,7 @@ export const Account = ({ account }: AccountProps) => {
       >
         {centerEllipsis(account)}
       </AccountHash>
+      <Button onClick={submit}></Button>
     </Box>
   );
 };
